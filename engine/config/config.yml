@@ -37,11 +37,11 @@ framework:
         log: true
 
 tekkl_app:
-    app_name: 'TEKKL core App' 
-    app_email: 'email.bachmann@gmail.com'
-    host: 'tekkl.local'
-    path: ''
-    use_ssl: false
+    app_name: '%app_name%' 
+    app_email: '%app_email%'
+    host: '%app_host%'
+    path: '%app_base_path%'
+    use_ssl: %app_use_ssl%
 
 tekkl_user:
     registration:
