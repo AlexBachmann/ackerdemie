@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
 **/
 import { Directive, ElementRef } from '@angular/core';
-import { fireEvent } from '../../lib/utils/event-helper';
+import { fireEvent } from '../../../lib/utils/event-helper';
 
 @Directive({
 	selector: '[close-on-click]',

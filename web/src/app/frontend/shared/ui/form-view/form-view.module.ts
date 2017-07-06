@@ -8,20 +8,13 @@
 **/
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WindowRef } from './window-ref.service';
-import { DocumentRef } from './document-ref.service';
-import { PageTitleComponent } from '../ui/page-title/page-title.component';
+import { FormViewComponent } from './form-view.component';
 
 @NgModule({
 	imports: [
 		CommonModule
 	],
-	providers: [ WindowRef, DocumentRef ],
-	declarations: [ 
-		PageTitleComponent
-	],
-	exports: [ 
-		PageTitleComponent
-	]
+	declarations: [ FormViewComponent ],
+	exports: [ FormViewComponent ]
 })
-export class BrowserModule { }
+export class FormViewModule { }

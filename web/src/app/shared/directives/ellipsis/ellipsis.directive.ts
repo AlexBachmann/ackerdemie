@@ -7,7 +7,6 @@
  * file that was distributed with this source code.
 **/
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { fireEvent } from '../../lib/utils/event-helper';
 
 @Directive({
 	selector: '[ellipsis]'

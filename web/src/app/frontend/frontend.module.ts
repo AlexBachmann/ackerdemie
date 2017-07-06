@@ -16,6 +16,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { DropdownModule } from '../shared/ui/dropdown/dropdown.module';
 import { OffcanvasModule } from '../shared/ui/offcanvas/offcanvas.module';
 import { BrowserModule } from '../shared/browser/browser.module';
+import { CloseOnClickModule } from '../shared/directives/close-on-click/close-on-click.module';
 import { NotificationModule } from '../shared/ui/notification/notification.module';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { NotificationModule } from '../shared/ui/notification/notification.modul
 		BrowserModule,
 		NotificationModule,
 		DropdownModule,
-		OffcanvasModule
+		OffcanvasModule,
+		CloseOnClickModule
 	],
 	declarations: [
 		FrontendComponent,

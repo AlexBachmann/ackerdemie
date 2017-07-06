@@ -18,6 +18,5 @@ export class FormViewComponent implements OnInit {
 	constructor() { }
 
 	ngOnInit() {
-		console.log(this.background);
 	}
 }

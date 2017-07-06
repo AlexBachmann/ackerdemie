@@ -19,7 +19,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { BrowserModule } from '../../shared/browser/browser.module';
 import { NotificationModule } from '../../shared/ui/notification/notification.module';
-import { FormViewComponent } from '../shared/ui/form-view/form-view.component';
+import { FormViewModule } from '../shared/ui/form-view/form-view.module';
 
 @NgModule({
 	imports: [
@@ -29,14 +29,14 @@ import { FormViewComponent } from '../shared/ui/form-view/form-view.component';
 		UserRoutingModule,
 		FormsModule,
 		FacebookModule,
+		FormViewModule
 	],
 	declarations: [
 		LoginComponent, 
 		RegisterComponent, 
 		ConfirmComponent, 
 		ResetPasswordComponent, 
-		NewPasswordComponent,
-		FormViewComponent
+		NewPasswordComponent
 	]
 })
 export class UserModule { }
