@@ -40,8 +40,8 @@ install:
   - cd web && npm install && cd ..
   - cd web && node_modules/protractor/bin/webdriver-manager update && cd ..
   - nohup bash -c "./node_modules/protractor/bin/webdriver-manager start 2>&1 &"
-  # Build project
-  - cd web && node_modules/.bin/gulp build && cd ..
+  # Build project for production
+  - cd web && node_modules/.bin/gulp build.prod && cd ..
   # Generate JWT Keys
   - source tools/travis/generate_jwt_keys.sh
 
