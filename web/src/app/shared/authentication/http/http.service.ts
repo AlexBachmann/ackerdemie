@@ -17,6 +17,8 @@ import { LoginUrlResolver } from '../../url-resolver/login-url-resolver';
 import { AuthenticationService } from '../authentication.service';
 import { JwtStorage } from '../jwt-storage/jwt-storage.service';
 import { RefreshTokenStorage } from '../refresh-token-storage/refresh-token-storage.service';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class TekklHttpService extends Http {
