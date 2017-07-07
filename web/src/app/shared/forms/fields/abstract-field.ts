@@ -16,4 +16,15 @@ export class AbstractField {
 	getFormControl(){
 		return this.formControl;
 	}
+	getFormControlName(){
+		var name = '';
+		if(this.formControl.parent){
+			for(var key in this.formControl.parent.controls){
+				if(this.formControl.parent.controls[key] == this.formControl){
+					name = key;
+				}
+			}
+		}
+		return name;
+	}
 }

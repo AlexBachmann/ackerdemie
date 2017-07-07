@@ -23,8 +23,6 @@ import { FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/f
 })
 export class SelectFieldComponent extends AbstractField implements ControlValueAccessor {
 	@Input() label: string;
-
-	private idCounter = 0;
 	display: string
 	opened: boolean = false
 	_value: string
@@ -39,6 +37,7 @@ export class SelectFieldComponent extends AbstractField implements ControlValueA
 		}
 		this.setDisplay();
 	}
+	@Input()
 	get value(){
 		return this._value;
 	}

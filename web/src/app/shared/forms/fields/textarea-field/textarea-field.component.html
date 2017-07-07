@@ -1,5 +1,5 @@
 <div class="form-control" [class.label-top]="hasValue()">
 	<label>{{label}}</label>
-	<textarea #nativeInput (input)="value = $event.target.value" (blur)="propagateTouch()"></textarea>
+	<textarea #nativeInput [name]="getFormControlName()" (input)="value = $event.target.value" (blur)="propagateTouch()"></textarea>
 	<ng-content select="tekkl-field-error"></ng-content>
 </div>

@@ -30,6 +30,7 @@ export class TextareaFieldComponent extends AbstractField implements ControlValu
 	hasValue(){
 		return this.value ? true : false
 	}
+	@Input()
 	get value(): string{
 		return this.inputRef.nativeElement.value;
 	}

@@ -31,6 +31,7 @@ export class TextFieldComponent extends AbstractField implements ControlValueAcc
 	hasValue(){
 		return this.value ? true : false
 	}
+	@Input()
 	get value(): string{
 		return this.inputRef.nativeElement.value;
 	}
