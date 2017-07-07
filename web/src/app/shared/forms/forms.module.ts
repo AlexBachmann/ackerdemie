@@ -13,6 +13,7 @@ import { FieldErrorComponent } from './field-error/field-error.component';
 import { TextFieldComponent } from './fields/text-field/text-field.component';
 import { TextareaFieldComponent } from './fields/textarea-field/textarea-field.component';
 import { SelectFieldComponent } from './fields/select-field/select-field.component';
+import { SelectOptionComponent } from './fields/select-field/select-option.component';
 import { RadioFieldComponent } from './fields/radio-field/radio-field.component';
 import { CheckboxFieldComponent } from './fields/checkbox-field/checkbox-field.component';
 import { InputDebounceComponent } from './input-debounce/input-debounce.component';
@@ -32,7 +33,8 @@ import { VerticalSlideModule } from '../ui/vertical-slide/vertical-slide.module'
 		SelectFieldComponent, 
 		RadioFieldComponent, 
 		CheckboxFieldComponent, 
-		InputDebounceComponent
+		InputDebounceComponent,
+		SelectOptionComponent
 	],
 	exports: [
 		NgFormsModule,
@@ -43,7 +45,8 @@ import { VerticalSlideModule } from '../ui/vertical-slide/vertical-slide.module'
 		SelectFieldComponent, 
 		RadioFieldComponent, 
 		CheckboxFieldComponent, 
-		InputDebounceComponent
+		InputDebounceComponent,
+		SelectOptionComponent
 	]
 })
 export class FormsModule { }

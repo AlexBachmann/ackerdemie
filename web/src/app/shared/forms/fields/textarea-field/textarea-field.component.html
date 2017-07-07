@@ -1,5 +1,5 @@
 <div class="form-control" [class.label-top]="hasValue()">
 	<label>{{label}}</label>
-	<textarea [name]="name" [formControl]="control"></textarea>
+	<textarea (input)="value = $event.target.value" (blur)="propagateTouch()"></textarea>
 	<ng-content></ng-content>
 </div>

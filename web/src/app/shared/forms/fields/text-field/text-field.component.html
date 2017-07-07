@@ -1,6 +1,6 @@
 <div class="form-control" [class.label-top]="hasValue()">
 	<label>{{label}}</label>
-	<input [name]="name" [type]="type" [formControl]="control" />
+	<input #nativeInput (input)="value = $event.target.value" (blur)="propagateTouch()" [type]="type" />
 	<ng-content></ng-content>
 </div>
 
