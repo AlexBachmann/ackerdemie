@@ -1,0 +1,15 @@
+@import "./src/assets/private/sass/base";
+.select-option
+	padding: 2px 5px
+	background: rgba(255,255,255,0.9)
+	border-width: 0 1px 1px
+	border-style: solid
+	border-color: #E2E2E2
+	cursor: pointer
+	transition: background 0.2s
+
+	span
+		+ellipsis()
+
+	&:hover
+		background: rgba(255,255,255,1)

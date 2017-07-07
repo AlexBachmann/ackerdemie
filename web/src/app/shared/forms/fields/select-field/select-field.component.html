@@ -1,8 +1,12 @@
-<label>{{label}}
-	<div class="input_wrapper">
-		<select [name]="name" [formControl]="control" (change)="onChange($event)">
-			
-		</select>
-		<span class="icon icon-info"></span>
+<div class="form-control">
+	<div class="select-outer" [class.open]="opened" [class.label-top]="hasDisplay()" (clickOutside)="close()">
+		<label>{{label}}</label>
+		<div class="display" (click)="toggle()">
+			<span>{{display}}</span>
+		</div>
+		<div class="options">
+			<ng-content select="tekkl-select-option"></ng-content>
+		</div>
 	</div>
-</label>
+	<ng-content select="tekkl-field-error"></ng-content>
+</div>
