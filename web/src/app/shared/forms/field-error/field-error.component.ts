@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 import { Component, Input, OnInit, Host, Optional, Inject } from '@angular/core';
-import { AbstractControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractControl, NG_VALUE_ACCESSOR, FormGroup } from '@angular/forms';
 import { AbstractField } from '../fields/abstract-field';
 
 @Component({
@@ -16,9 +16,10 @@ import { AbstractField } from '../fields/abstract-field';
 	styleUrls: ['./field-error.component.sass']
 })
 export class FieldErrorComponent implements OnInit {
-	@Input() control: AbstractControl;
+	@Input() control: AbstractControl | FormGroup;
 	@Input() type: string;
 	@Input() message: string;
+	@Input() flat: boolean = false;
 	
 	private host?: AbstractField
 
@@ -35,5 +36,26 @@ export class FieldErrorComponent implements OnInit {
 			}
 		}
 	}
+	hasError(type: string){
+		if(this.control.hasError(type)) return true;
 
+		if(this.control instanceof FormGroup && this.control.controls && !this.flat){
+			var errors = this.getChildErrors(this.control, type);
+			if(errors.length) return true;
+		}
+		return false;
+	}
+	private getChildErrors(group: FormGroup, type: string){
+		var errors = [];
+		for(var key in group.controls){
+			var control = group.controls[key];
+			if(control.hasError(type)){
+				errors.push(control.getError(type));
+			}
+			if(control instanceof FormGroup){
+				errors.concat(this.getChildErrors(control, type));
+			}
+		}
+		return errors;
+	}
 }
