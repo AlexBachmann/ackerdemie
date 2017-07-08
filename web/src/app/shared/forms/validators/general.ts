@@ -42,4 +42,11 @@ export class Validators extends ng2Validators {
 			}
 		}
 	}
+	static integer(control: FormControl): { [key: string]: any }{
+		// Ignore empty fields => use 'required' validation for these cases
+		if(!control.value) return;
+		if(control.value != parseInt(control.value)){
+			return { 'integer': true };
+		}
+	}
 }
