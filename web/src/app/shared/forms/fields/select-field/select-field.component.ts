@@ -84,7 +84,9 @@ export class SelectFieldComponent extends AbstractField implements ControlValueA
 		this.opened = true;
 	}
 	close(){
-		this.opened = false;
-		this.propagateTouch();
+		if(this.opened !== false){
+			this.opened = false;
+			this.propagateTouch();
+		}
 	}
 }
