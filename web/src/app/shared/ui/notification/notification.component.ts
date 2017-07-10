@@ -46,8 +46,7 @@ import defaultConfig from './config';
  	}
 
  	getMessage():string{
- 		var node = this.el.nativeElement.childNodes[0];
- 		return node.nodeValue;
+ 		return this.el.nativeElement.innerHTML;
  	}
 
  	getType():string {
@@ -65,7 +64,7 @@ import defaultConfig from './config';
  	activate(){
 		if (this.timeoutID) clearTimeout(this.timeoutID);
 		this.timeoutID = setTimeout(() => {
-			this.active = true
+			this.active = true;
 			if(this.getDuration() !== 0){
 				this.deactivateAfter(this.getDuration());
 			}

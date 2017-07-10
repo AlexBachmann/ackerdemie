@@ -10,10 +10,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationComponent } from './notification.component';
 import { NotificationContainerComponent } from './notification-container.component';
+import { VerticalSlideModule } from '../vertical-slide/vertical-slide.module';
 
 @NgModule({
 	imports: [
-		CommonModule
+		CommonModule,
+		VerticalSlideModule
 	],
 	declarations: [ NotificationComponent, NotificationContainerComponent ],
 	exports: [ NotificationComponent, NotificationContainerComponent ]

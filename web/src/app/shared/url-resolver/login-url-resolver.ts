@@ -14,9 +14,9 @@ import 'rxjs/add/observable/of';
 export class LoginUrlResolver implements UrlResolver {
 	resolve(url: string):Observable<string>{
 		if(url.substr(0, 8) == '/backend'){
-			return Observable.of('/backend/login');
+			return Observable.of('/backend/login?notification=login.required');
 		}else{
-			return Observable.of('/user/login');
+			return Observable.of('/user/login?notification=login.required');
 		}
 	}
 }

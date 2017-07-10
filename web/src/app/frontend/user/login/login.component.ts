@@ -9,7 +9,7 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PageComponent } from '../../../shared/browser/page/page.component';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '../../../shared/forms/validators/general';
 import { Http } from '@angular/http';
@@ -32,6 +32,7 @@ export class LoginComponent extends PageComponent implements OnInit {
 		private fb: FormBuilder,
 		private http: Http,
 		private router: Router,
+		private route: ActivatedRoute,
 		private userStorage: UserStorage,
 		private authService: AuthenticationService,
 		title: Title,
@@ -43,6 +44,12 @@ export class LoginComponent extends PageComponent implements OnInit {
 	ngOnInit() {
 		this.setPageTitle();
 		this.form = this.createForm();
+	}
+
+	ngAfterViewInit(){
+		if(this.route.snapshot.queryParams.notification){
+			this.showNotification(this.route.snapshot.queryParams.notification);
+		}
 	}
 
 	onSubmit(value){
