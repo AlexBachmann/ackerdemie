@@ -23,6 +23,7 @@ import { FacebookModule } from './shared/facebook/facebook.module';
 import { FacebookService } from './shared/facebook/facebook.service';
 import { OutsideClickEvent } from './shared/events/outside-click.event';
 import { offcanvasReducer } from './shared/ui/offcanvas/offcanvas.state';
+import { RouterModule as TekklRouterHelperModule } from './shared/router/router.module';
 
 import { AppComponent } from './app.component';
 
@@ -39,6 +40,7 @@ import { AppComponent } from './app.component';
 		AuthenticationModule,
 		AppRoutingModule,
 		EventsModule,
+		TekklRouterHelperModule,
 		StoreModule.provideStore({ offcanvas: offcanvasReducer })
 	],
 	providers: [
