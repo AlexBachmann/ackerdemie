@@ -18,7 +18,7 @@ describe('Backend LoginPage', function() {
 	});
 
 	it('should navigate to the Login Page', () => {
-		expect(browser.getCurrentUrl()).toMatch(/\/backend\/login$/);
+		expect(browser.getCurrentUrl()).toMatch(/\/backend\/login\?notification=login\.required$/);
 	});
 	it('should contain the username input field', () => {
 		expect(page.getUserNameInput().isPresent()).toBeTruthy();

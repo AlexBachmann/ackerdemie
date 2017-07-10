@@ -84,7 +84,10 @@ class RegistrationController extends FOSRestController
 			if (null !== $response = $event->getResponse()) {
                 return $response;
             }
+            $errors = $form->getErrors(true);
+            throw new BadRequestHttpException((string) $errors);
         }
+        throw new \RuntimeException('Something went wrong');
     }
     /**
      * @View()

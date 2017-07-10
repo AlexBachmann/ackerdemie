@@ -86,7 +86,7 @@ class PasswordController extends FOSRestController
 
                 return $response;
             }
-            $errors = $form->getErrors();
+            $errors = $form->getErrors(true);
             throw new BadRequestHttpException((string) $errors);
         }
         throw new \RuntimeException('Something went wrong');

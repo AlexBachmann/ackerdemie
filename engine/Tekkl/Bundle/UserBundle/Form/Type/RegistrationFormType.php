@@ -65,7 +65,7 @@ class RegistrationFormType extends AbstractType {
 				'type' => PasswordType::class,
 				'constraints' => [
 					new NotBlank(),
-					new Length(8)
+					new Length(['min' => 8])
 				]
 			])
 		;
