@@ -60,10 +60,12 @@ abstract class FacebookUserManager implements FacebookUserManagerInterface {
     /**
      * {@inheritdoc}
      */
-    public function createSystemUser($username, $email){
+    public function createSystemUser($name, $email){
+        $username = $this->generateUsernameFromFacebookName($name);
         $user = $this->userManager->createUser();
         $password = uniqid();
 
+        $user->setName($name);
         $user->setUsername($username);
         $user->setEmail($email);
         $user->setPlainPassword($password);
@@ -73,7 +75,7 @@ abstract class FacebookUserManager implements FacebookUserManagerInterface {
         return $user;
     }
 
-    public function generateUsernameFromFacebookName($facebookName){
+    public function generateUsernameFromFacebookName($name){
         $validUserName = $this->generateValidUserName($facebookName);
         $validUserName = $this->usernameCanonicalizer->canonicalize($validUserName);
 

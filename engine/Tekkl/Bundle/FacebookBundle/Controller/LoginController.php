@@ -55,8 +55,7 @@ class LoginController extends FOSRestController
         // No system user is attached to this facebook user yet
         $user = $userManager->findUserByEmail($vars['email']);
         if(!$user){
-            $username = $userManager->generateUsernameFromFacebookName($vars['name']);
-            $user = $userManager->createSystemUser($username, $vars['email']);
+            $user = $userManager->createSystemUser($vars['name'], $vars['email']);
 
             /** @var $dispatcher EventDispatcherInterface */
             $dispatcher = $this->get('event_dispatcher');
