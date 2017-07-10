@@ -30,6 +30,13 @@ export class NotificationService {
 		}
 	}
 
+	removeById(id: string){
+		var notifications = this.stack.filter((notification: NotificationComponent) => notification.id == id);
+		if(notifications && notifications.length){
+			this.remove(notifications[0]);
+		}
+	}
+
 	getNotifications(){
 		return this.stack;
 	}

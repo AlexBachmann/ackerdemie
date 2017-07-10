@@ -53,7 +53,7 @@ export class TekklHttpService extends Http {
 	 		.catch((error: Response) => {
 	 			if(error.status == 401){
 	 				new LoginUrlResolver().resolve(this.router.url).subscribe((loginUrl) => {
-			 			this.router.navigate([loginUrl]);
+			 			this.router.navigateByUrl(loginUrl);
 			 		});
 	 			}	
 	 			return Observable.throw(error);

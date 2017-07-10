@@ -51,6 +51,10 @@ export class LoginComponent extends PageComponent implements OnInit {
 			this.showNotification(this.route.snapshot.queryParams.notification);
 		}
 	}
+	
+	ngOnDestroy(){
+		this.removeNotification(this.route.snapshot.queryParams.notification);
+	}
 
 	onSubmit(value){
 		this.loading = true;

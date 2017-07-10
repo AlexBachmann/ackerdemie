@@ -36,4 +36,7 @@ export abstract class PageComponent implements OnInit {
 			throw new Error('There is no Notification defined with the id ' + id );
 		}
 	}
+	protected removeNotification(id){
+		this.notificationService.removeById(id);
+	}
 }

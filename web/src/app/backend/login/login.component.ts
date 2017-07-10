@@ -52,6 +52,10 @@ export class LoginComponent extends PageComponent implements OnInit {
 		}
 	}
 
+	ngOnDestroy(){
+		this.removeNotification(this.route.snapshot.queryParams.notification);
+	}
+
 	onSubmit(value){
 		this.loading = true;
 		this.http.post('/api/login_check', JSON.stringify(value))
