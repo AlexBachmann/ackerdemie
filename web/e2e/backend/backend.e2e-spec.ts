@@ -20,7 +20,7 @@ describe('Backend', function() {
 
 	it('should renavigate unauthorized users to the login page', () => {
 		page.navigateTo();
-		expect(browser.getCurrentUrl()).toMatch(/\/backend\/login$/);
+		expect(browser.getCurrentUrl()).toMatch(/\/backend\/login\?notification=login\.required$/);
 	});
 	it('should navigate to the backend after successfuly login', ()=> {
 		page.login();

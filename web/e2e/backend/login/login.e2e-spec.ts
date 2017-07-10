@@ -52,7 +52,7 @@ describe('Backend LoginPage', function() {
 		submit.click();
 		browser.waitForAngular();
 		// We should still be on the login page
-		expect(browser.getCurrentUrl()).toMatch(/\/backend\/login\?notification=login\.required$/);
+		expect(browser.getCurrentUrl()).toMatch(/\/backend\/login$/);
 	});
 	it('should allow admin users to login', () => {
 		page.login();
