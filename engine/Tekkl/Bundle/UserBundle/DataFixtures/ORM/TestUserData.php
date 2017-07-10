@@ -28,6 +28,7 @@ class TestUserData extends TestEnvDataFixture {
     private function createSimpleUser(ObjectManager $manager){
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->createUser();
+        $user->setName('Simple User');
         $user->setUsername('user');
         $user->setEmail('user@test.de');
         $user->setPlainPassword('password');
@@ -38,6 +39,7 @@ class TestUserData extends TestEnvDataFixture {
     private function createAdminUser(ObjectManager $manager){
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->createUser();
+        $user->setName('Admin User');
         $user->setUsername('admin');
         $user->setEmail('admin@test.de');
         $user->setPlainPassword('password');
@@ -49,6 +51,7 @@ class TestUserData extends TestEnvDataFixture {
     private function createSuperAdminUser(ObjectManager $manager){
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->createUser();
+        $user->setName('Super User');
         $user->setUsername('superadmin');
         $user->setEmail('superadmin@test.de');
         $user->setPlainPassword('password');
@@ -60,6 +63,7 @@ class TestUserData extends TestEnvDataFixture {
     private function createPasswordResetUser(ObjectManager $manager){
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->createUser();
+        $user->setName('Password Reset');
         $user->setUsername('password_reset_user');
         $user->setEmail('password_reset@test.de');
         $user->setPlainPassword('old_password');
