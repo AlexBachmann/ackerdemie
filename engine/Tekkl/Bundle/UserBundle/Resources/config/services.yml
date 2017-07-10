@@ -1,4 +1,9 @@
 services:
+    tekkl_user.form_type.registration:
+        class: Tekkl\Bundle\UserBundle\Form\Type\RegistrationFormType
+        arguments: ['%fos_user.model.user.class%']
+        tags:
+            - { name: form.type }
     tekkl_user.listener.authentication_success.authorization_header:
         class: Tekkl\Bundle\UserBundle\EventListener\Authentication\AuthorizationHeaderSetter
         arguments: ['%tekkl_user.jwt.authorization_header.name%', '%tekkl_user.jwt.authorization_header.prefix%']
@@ -26,7 +31,7 @@ services:
         arguments: ['@request_stack', '@gesdinet.jwtrefreshtoken']
         tags:
             - { name: kernel.event_listener, event: !php/const:Lexik\Bundle\JWTAuthenticationBundle\Events::JWT_EXPIRED, method: reauthenticate }
-
+    
     tekkl_user.listener.registration_success.jwt_authentication:
         class: Tekkl\Bundle\UserBundle\EventListener\Registration\JwtAuthentication
         arguments: ['@lexik_jwt_authentication.handler.authentication_success', '@security.token_storage']

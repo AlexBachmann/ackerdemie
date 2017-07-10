@@ -22,16 +22,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Tekkl\Bundle\UserBundle\Event\FilterUserResponseEvent;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Tekkl\Bundle\UserBundle\Form\Type\RegistrationFormType;
 
 class RegistrationController extends FOSRestController
 {
 	/**
      * @View()
      */
-    public function postRegisterAction(Request $request)
-    {
-        /** @var $formFactory FactoryInterface */
-        $formFactory = $this->get('fos_user.registration.form.factory');
+    public function postRegisterAction(Request $request){
+        $formBuilder = $this->container->get('form.factory')
+                            ->createNamedBuilder('', RegistrationFormType::class);
         /** @var $userManager UserManagerInterface */
         $userManager = $this->get('fos_user.user_manager');
         /** @var $dispatcher EventDispatcherInterface */
@@ -47,7 +47,7 @@ class RegistrationController extends FOSRestController
             return $event->getResponse();
         }
 
-        $form = $formFactory->createForm();
+        $form = $formBuilder->getForm();
         $form->setData($user);
 
         $form->handleRequest($request);

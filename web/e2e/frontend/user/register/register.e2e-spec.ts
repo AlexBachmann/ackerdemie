@@ -20,6 +20,12 @@ describe('RegisterPage', function() {
   it('should navigate to the Login Page', () => {
     expect(browser.getCurrentUrl()).toMatch(/\/user\/register/);
   });
+  it('should contain the firstname input field', () => {
+    expect(page.getFirstNameInput().isPresent()).toBeTruthy();
+  });
+  it('should contain the lastname input field', () => {
+    expect(page.getLastNameInput().isPresent()).toBeTruthy();
+  });
   it('should contain the username input field', () => {
   	expect(page.getUserNameInput().isPresent()).toBeTruthy();
   });
@@ -36,18 +42,28 @@ describe('RegisterPage', function() {
   	expect(page.getSubmitButton().isPresent()).toBeTruthy();
   });
   it('should disable the submit button as long as a single field is empty', () => {
-  	var username = page.getUserNameInput();
+  	var firstname = page.getFirstNameInput();
+    var lastname = page.getLastNameInput();
+    var username = page.getUserNameInput();
   	var email = page.getEmailInput();
   	var password = page.getPasswordInput();
   	var password_verify = page.getPasswordVerifyInput();
   	var submit = page.getSubmitButton();
+    expect(firstname.getAttribute('value')).toMatch('');
+    expect(lastname.getAttribute('value')).toMatch('');
   	expect(username.getAttribute('value')).toMatch('');
   	expect(email.getAttribute('value')).toMatch('');
   	expect(password.getAttribute('value')).toMatch('');
   	expect(password_verify.getAttribute('value')).toMatch('');
   	expect(submit.isEnabled()).toBeFalsy();
 
-  	username.sendKeys('admin');
+  	firstname.sendKeys('Firstname');
+    expect(submit.isEnabled()).toBeFalsy();
+
+    lastname.sendKeys('Lastname');
+    expect(submit.isEnabled()).toBeFalsy();
+
+    username.sendKeys('admin');
   	expect(submit.isEnabled()).toBeFalsy();
 
   	email.sendKeys('admin@test.de');
@@ -60,7 +76,9 @@ describe('RegisterPage', function() {
   	expect(submit.isEnabled()).toBeTruthy();
   });
   it('should be able to register', () => {
-  	var username = page.getUserNameInput();
+  	var firstname = page.getFirstNameInput();
+    var lastname = page.getLastNameInput();
+    var username = page.getUserNameInput();
   	var email = page.getEmailInput();
   	var password = page.getPasswordInput();
   	var password_verify = page.getPasswordVerifyInput();
@@ -69,7 +87,8 @@ describe('RegisterPage', function() {
   	var usernameInput = 'user' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
   	var emailInput = 'email' + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5) + '@test.de';
 
-
+    firstname.sendKeys('Firstname');
+    lastname.sendKeys('Lastname');
   	username.sendKeys(usernameInput);
   	email.sendKeys(emailInput);
   	password.sendKeys('password');

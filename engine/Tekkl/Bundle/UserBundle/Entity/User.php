@@ -26,15 +26,57 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="string", length=180)
+     */
+    protected $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=180)
+     */
+    protected $lastname;
+
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function getFirstname(){
+        return $this->firstname;
+    }
+
+    public function setFirstname($firstname){
+        $this->firstname = $firstname;
+    }
+
+    public function getLastname(){
+        return $this->lastname;
+    }
+
+    public function setLastname($lastname){
+        $this->lastname = $lastname;
+    }
+
+    public function getName(){
+        return trim($this->firstname . ' ' . $this->lastname);
+    }
+
+    public function setName($name){
+        $parts = explode(' ', $name, 2);
+        $this->setFirstname($name[0]);
+        if(isset($name[1])){
+            $this->setLastname($name[1]);
+        }else{
+            $this->setLastname('');
+        }
     }
 
     public function getPublicData(){
         return [
             'id' => $this->getId(),
             'username' => $this->getUsername(),
+            'firstname' => $this->getFirstname(),
+            'lastname' => $this->getLastname(),
             'email' => $this->getEmail(),
             'roles' => $this->getRoles()
         ];

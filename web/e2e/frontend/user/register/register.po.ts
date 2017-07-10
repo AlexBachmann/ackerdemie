@@ -13,6 +13,12 @@ export class RegisterPage {
   navigateTo() {
     return browser.get('/user/register');
   }
+  getFirstNameInput(){
+    return element(by.css('app-register input[name="firstname"]'));
+  }
+  getLastNameInput(){
+    return element(by.css('app-register input[name="lastname"]'));
+  }
   getUserNameInput(){
     return element(by.css('app-register input[name="username"]'));
   }

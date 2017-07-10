@@ -60,7 +60,7 @@ export class RegisterComponent extends PageComponent implements OnInit {
 					return;
 				}
 				var user = new User(response.user);
-				this.handleAuthenticatedUser(user);
+				//this.handleAuthenticatedUser(user);
 			}, (err) => {
 				this.userStorage.deleteUser();
 				this.clearFormPassword(value);
@@ -98,7 +98,9 @@ export class RegisterComponent extends PageComponent implements OnInit {
 	}
 	createForm(): FormGroup {
 		return this.fb.group({
-			username: ['', [Validators.required, Validators.minLength(2)]],
+			firstname: ['', [Validators.required]],
+			lastname: ['', [Validators.required]],
+			username: ['', [Validators.required, Validators.minLength(4)]],
 			email: ['', [Validators.required, Validators.email]],
 			plainPassword: this.fb.group({
 				first: ['', [Validators.required, Validators.minLength(8)]],
