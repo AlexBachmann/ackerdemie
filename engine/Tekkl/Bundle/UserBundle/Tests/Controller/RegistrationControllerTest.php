@@ -67,6 +67,8 @@ class RegistrationControllerTest extends WebTestCase
     private function getUserRegistrationPayload(){
     	$rand = preg_replace('/[^a-z]+/', '', base_convert(rand(10000000, 100000000), 10, 32));
     	$user = [
+            'firstname' => 'Test',
+            'lastname'  => 'User',
     		'username' 	=> 'user' . $rand,
     		'email'		=> 'email' . $rand . '@test.de',
     		'plainPassword' => [
