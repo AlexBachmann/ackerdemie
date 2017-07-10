@@ -18,7 +18,7 @@ describe('Backend LoginPage', function() {
 	});
 
 	it('should navigate to the Login Page', () => {
-		expect(browser.getCurrentUrl()).toMatch(/\/backend\/login\?notification=login\.required$/);
+		expect(browser.getCurrentUrl()).toMatch(/\/backend\/login$/);
 	});
 	it('should contain the username input field', () => {
 		expect(page.getUserNameInput().isPresent()).toBeTruthy();
@@ -52,7 +52,7 @@ describe('Backend LoginPage', function() {
 		submit.click();
 		browser.waitForAngular();
 		// We should still be on the login page
-		expect(browser.getCurrentUrl()).toMatch(/\/backend\/login$/);
+		expect(browser.getCurrentUrl()).toMatch(/\/backend\/login\?notification=login\.required$/);
 	});
 	it('should allow admin users to login', () => {
 		page.login();
