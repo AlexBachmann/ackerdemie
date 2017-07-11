@@ -24,7 +24,7 @@
  		private windowRef: WindowRef
  		){}
  	registerEvents(){
- 		this.router.events.subscribe((event: NavigationStart) => {
+ 		this.router.events.subscribe((event: NavigationStart | NavigationEnd) => {
  			if (event instanceof NavigationStart) {
  				this.saveScroll();
  				this.lastRoute = this.router.url;
