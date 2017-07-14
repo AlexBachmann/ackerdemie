@@ -105,6 +105,14 @@ export class SelectFieldComponent extends AbstractField implements ControlValueA
 		this.optionIndex = undefined;
 		this.resetOptionFocus();
 	}
+	onFocus(bool){
+		if(bool){
+			this.focused = true;
+		}else{
+			this.focused = false;
+			this.propagateTouch();
+		}
+	}
 	onKeyPress(event){
 		switch(event.key){
 			case 'Enter':
