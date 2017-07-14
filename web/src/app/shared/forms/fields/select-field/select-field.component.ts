@@ -25,8 +25,11 @@ export class SelectFieldComponent extends AbstractField implements ControlValueA
 	@Input() label: string;
 	display: string
 	opened: boolean = false
+	focused: boolean = false
 	_value: string
-	_optionMap: Map<string, any> = new Map<string, string>();
+	_optionMap: Map<string, any> = new Map<string, string>()
+	options: SelectOptionComponent[] = []
+	optionIndex: number
 
 	propagateChange = (_: any) => {};
 	propagateTouch = () => {};
@@ -70,8 +73,11 @@ export class SelectFieldComponent extends AbstractField implements ControlValueA
 		this.propagateTouch = fn;
 	}
 
-	registerOption(value: string, text: string){
-		this._optionMap.set(value, text);
+	registerOption(option: SelectOptionComponent){
+		if(!this._optionMap.has(option.value)){
+			this._optionMap.set(option.value, option.text);
+			this.options.push(option);
+		}
 	}
 
 	isRequired():boolean{
@@ -82,11 +88,80 @@ export class SelectFieldComponent extends AbstractField implements ControlValueA
 	}
 	open(){
 		this.opened = true;
+		if(this.value){
+			for(var index = 0; index < this.options.length; index++){
+				if(this.options[index].value == this.value){
+					this.optionIndex = index;
+					this.options[index].focused = true;
+				}
+			}
+		}
 	}
 	close(){
 		if(this.opened !== false){
 			this.opened = false;
 			this.propagateTouch();
 		}
+		this.optionIndex = undefined;
+		this.resetOptionFocus();
+	}
+	onFocus(){
+		this.focused = true;
+	}
+	onBlur(){
+		console.log('we lost focus');
+	}
+	onKeyPress(event){
+		switch(event.key){
+			case 'Enter':
+				this.handleEnter();
+				break;
+			case 'ArrowUp':
+				event.preventDefault();
+				this.handleArrowUp();
+				break;
+			case 'ArrowDown':
+				event.preventDefault();
+				this.handleArrowDown();
+				break;
+		}
+	}
+	private handleEnter(){
+		if(!this.opened){
+			this.open();
+			return;
+		}
+		if(this.optionIndex !== undefined){
+			var option = this.options[this.optionIndex];
+			this.value = option.value;
+		}
+		this.close();
+	}
+	private handleArrowUp(){
+		this.resetOptionFocus();
+		if(this.optionIndex === undefined){
+			this.optionIndex = this.options.length - 1;
+		}else{
+			(this.optionIndex == 0)? this.optionIndex = this.options.length -1 : this.optionIndex--;
+		}
+		this.setOptionFocus();
+	}
+	private handleArrowDown(){
+		this.resetOptionFocus();
+		if(this.optionIndex === undefined){
+			this.optionIndex = 0;
+		}else{
+			(this.optionIndex == this.options.length -1)? this.optionIndex = 0 : this.optionIndex++;
+		}
+		this.setOptionFocus();
+	}
+	private resetOptionFocus(){
+		for(var option of this.options){
+			option.focused = false;
+		}
+	}
+	private setOptionFocus(){
+		var option = this.options[this.optionIndex];
+		option.focused = true;
 	}
 }

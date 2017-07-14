@@ -1,3 +1,3 @@
-<div class="select-option" (click)="onSelectOption()">
+<div class="select-option" [class.has-focus]="focused" (click)="onSelectOption()" >
 	<span>{{ text }}</span>
 </div>

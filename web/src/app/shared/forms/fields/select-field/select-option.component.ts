@@ -18,11 +18,12 @@ export class SelectOptionComponent {
 	@Input() value: string;
 	@Input() text: string;
 	@Input() selected: string;
+	focused = false
 
 	constructor(@Host() private select: SelectFieldComponent ){
 	}
 	ngOnInit(){
-		this.select.registerOption(this.value, this.text);
+		this.select.registerOption(this);
 		if(this.selected !== undefined){
 			this.select.value = this.value;
 		}

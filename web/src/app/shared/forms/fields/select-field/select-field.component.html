@@ -1,7 +1,7 @@
 <div class="form-control">
 	<div class="select-outer" [class.open]="opened" [class.label-top]="hasDisplay()" (clickOutside)="close()">
 		<label>{{label}}</label>
-		<div class="display" (click)="toggle()">
+		<div tabindex="0" class="display" (click)="toggle()" (focus)="onFocus()" (blur)="onBlur()" (keydown)="onKeyPress($event)">
 			<span>{{display}}</span>
 		</div>
 		<div class="options">

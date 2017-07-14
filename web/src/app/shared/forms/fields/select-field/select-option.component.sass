@@ -1,7 +1,7 @@
 @import "./src/assets/private/sass/base";
 .select-option
 	padding: 2px 5px
-	background: rgba(255,255,255,0.9)
+	background: white
 	border-width: 0 1px 1px
 	border-style: solid
 	border-color: #E2E2E2
@@ -14,5 +14,7 @@
 		min-height: 24px
 		line-height: 24px
 
-	&:hover
-		background: rgba(255,255,255,1)
+	&:hover,
+	&.has-focus
+		background: $grey-light
+
