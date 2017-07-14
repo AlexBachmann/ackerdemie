@@ -1,8 +1,10 @@
 <div class="form-control">
 	<div class="select-outer" [class.open]="opened" [class.label-top]="hasDisplay()" (clickOutside)="close()">
 		<label>{{label}}</label>
-		<div tabindex="0" class="display" [class.has-focus]="focused" (click)="toggle()" (focus)="focused=true" (blur)="focused=false" (keydown)="onKeyPress($event)">
-			<span>{{display}}</span>
+		<div class="display-outer" tabindex="0" class="display" [class.has-focus]="focused" (focus)="focused=true" (blur)="focused=false" (keydown)="onKeyPress($event)">
+			<div class="display"  (click)="toggle()" >
+				<span>{{display}}</span>
+			</div>
 		</div>
 		<div class="options">
 			<ng-content select="tekkl-select-option"></ng-content>
