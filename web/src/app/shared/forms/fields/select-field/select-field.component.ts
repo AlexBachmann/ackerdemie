@@ -105,12 +105,6 @@ export class SelectFieldComponent extends AbstractField implements ControlValueA
 		this.optionIndex = undefined;
 		this.resetOptionFocus();
 	}
-	onFocus(){
-		this.focused = true;
-	}
-	onBlur(){
-		console.log('we lost focus');
-	}
 	onKeyPress(event){
 		switch(event.key){
 			case 'Enter':

@@ -31,6 +31,11 @@
 		height: 42px
 		color: $grey
 
+		&:focus,
+		&.has-focus
+			outline: none
+			border-bottom: $grey
+
 		span
 			+ellipsis()
 			display: block
