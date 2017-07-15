@@ -36,7 +36,8 @@
         "joomla/keychain": "~1.0",
         "lexik/jwt-authentication-bundle": "^2.2",
         "gesdinet/jwt-refresh-token-bundle": "dev-event-token-extraction-setting",
-        "facebook/graph-sdk": "^5.5"
+        "facebook/graph-sdk": "^5.5",
+        "doctrine/doctrine-migrations-bundle": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8|^5.0",
