@@ -25,7 +25,6 @@ framework:
         engines: ['twig']
     default_locale:  "%locale%"
     trusted_hosts:   ~
-    trusted_proxies: ~
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
@@ -41,7 +40,7 @@ tekkl_app:
     app_email: '%app_email%'
     host: '%app_host%'
     path: '%app_base_path%'
-    use_ssl: %app_use_ssl%
+    use_ssl: '%app_use_ssl%'
 
 tekkl_user:
     registration:
