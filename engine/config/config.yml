@@ -104,3 +104,8 @@ doctrine_migrations:
     table_name: migration_versions
     name: TEKKL Migrations
 
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+

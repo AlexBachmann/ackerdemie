@@ -1,9 +1,18 @@
 services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        
     tekkl.mailer:
         class: Tekkl\Bundle\AppBundle\Service\Mail\Mailer
         arguments: ['@mailer']
+    Tekkl\Bundle\AppBundle\Service\Mail\Mailer: '@tekkl.mailer'
+
     tekkl.util.inflector:
         class: Tekkl\Bundle\AppBundle\Util\Inflector\RestInflector
+    Tekkl\Bundle\AppBundle\Util\Inflector\RestInflector: '@tekkl.util.inflector'
+
     tekkl.listeners.kernel.request.json_request_data:
         class: Tekkl\Bundle\AppBundle\EventListener\KernelRequest\JsonRequestData
         arguments: [["POST", "PUT", "PATCH"], "^/api"]

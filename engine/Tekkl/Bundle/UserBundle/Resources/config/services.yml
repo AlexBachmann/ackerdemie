@@ -1,4 +1,9 @@
 services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        
     tekkl_user.form_type.registration:
         class: Tekkl\Bundle\UserBundle\Form\Type\RegistrationFormType
         arguments: ['%fos_user.model.user.class%']
