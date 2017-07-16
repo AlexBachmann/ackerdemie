@@ -16,6 +16,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/Batch1211/JWTRefreshTokenBundle"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Batch1211/swiftmailer-bundle"
         }
     ],
     "require": {
@@ -24,7 +28,7 @@
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
-        "symfony/swiftmailer-bundle": "^2.3",
+        "symfony/swiftmailer-bundle": "dev-console-exception-fix",
         "symfony/monolog-bundle": "^3.0",
         "symfony/polyfill-apcu": "^1.0",
         "sensio/distribution-bundle": "^5.0",
