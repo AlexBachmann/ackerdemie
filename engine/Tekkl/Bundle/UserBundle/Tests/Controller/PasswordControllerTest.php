@@ -14,8 +14,6 @@ use Tekkl\Bundle\AppBundle\Tests\WebTestCase;
 class PasswordControllerTest extends WebTestCase
 {
     public static function setUpBeforeClass(){
-        self::runCommand('doctrine:database:create');
-        self::runCommand('doctrine:schema:update --force');
         self::runCommand('doctrine:fixtures:load -n');
     }
     public function testMailIsSentAndContentIsOk()
