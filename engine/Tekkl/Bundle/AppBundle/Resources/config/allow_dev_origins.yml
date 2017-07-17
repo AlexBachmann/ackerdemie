@@ -1,6 +1,6 @@
 services:
     tekkl.listeners.kernel.response.allow_origin:
         class: Tekkl\Bundle\AppBundle\EventListener\KernelResponse\AllowXOrigin
-        arguments: ["*", "^/api", "Authorization,Refresh-Token"]
+        arguments: ["*", "^/api", "Authorization,Refresh-Token", "GET,PUT,POST,DELETE"]
         tags:
             - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
