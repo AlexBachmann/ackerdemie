@@ -13,9 +13,10 @@ namespace Tekkl\Bundle\AppBundle\EventListener\KernelResponse;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 
 class AllowXOrigin {
-	public function __construct($origin = '*', $pathPattern = null){
+	public function __construct($origin = '*', $pathPattern = null, $allowedHeaders = null){
 		$this->origin = $origin;
 		$this->pathPattern = $pathPattern;
+		$this->allowedHeaders = $allowedHeaders;
 	}
 	public function onKernelResponse(FilterResponseEvent $event){
 		$response = $event->getResponse();
@@ -29,5 +30,6 @@ class AllowXOrigin {
 			}
 		}
 		$response->headers->set('Access-Control-Allow-Origin', $this->origin);
+		$response->headers->set('Access-Control-Expose-Headers', $this->allowedHeaders);
 	}
 }
