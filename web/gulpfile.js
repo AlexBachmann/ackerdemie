@@ -19,10 +19,14 @@ gulp.task('watch', function(done){
 	watch(config.sprite.iconsPathPng + '/**/*.png', function(){runSequence('sprite', 'sass');});
 });
 
+// Default Task
 
+gulp.task('default', function(done){
+    runSequence('build', done);
+})
 // Build for Development
 gulp.task('build', function(done){
-    console.log('Build web application in Dev-Mode. Run "gulp build_prod" to build for production.')
+    console.log('Build web application in Dev-Mode. Run "gulp build.prod" to build for production.')
     runSequence(
       'clean.dist',
       'sprite',
@@ -42,7 +46,7 @@ gulp.task('build.prod', function(done){
       'sprite',
       'ng-cli.build.prod',
       'copy.build',
-      'copy.assets',
+      'copy.assets.prod',
       'clean.tmp',
       done
     );
@@ -50,22 +54,23 @@ gulp.task('build.prod', function(done){
 
 gulp.task('ng-cli.build', function(cb){
   exec('node_modules/.bin/ng build', {maxBuffer: 1024 * 500}, function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
+    if(stdout) console.log(stdout);
+    if(stderr) console.log(stderr);
     cb(err);
   });
 });
 
 gulp.task('ng-cli.build.prod', function(cb){
   exec('node_modules/.bin/ng build -prod -aot', {maxBuffer: 1024 * 500}, function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
+    if(stdout) console.log(stdout);
+    if(stderr) console.log(stderr);
     cb(err);
   });
 });
 
 gulp.task('copy.build', tasks('copy.build'));
 gulp.task('copy.assets', tasks('copy.assets'));
+gulp.task('copy.assets.prod', tasks('copy.assets.prod'));
 gulp.task('clean.tmp', tasks('clean.tmp'));
 gulp.task('clean.dist', tasks('clean.dist'));
 gulp.task('sprite', tasks('spraitinator'));
