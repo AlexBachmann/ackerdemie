@@ -17,7 +17,7 @@ use Symfony\Component\Form\Exception\UnexpectedTypeException;
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  */
-class DateSelectTransformer implements DataTransformerInterface
+class DateSelectDataTransformer implements DataTransformerInterface
 {
     /**
      * Transforms a DateTime object to a date array
