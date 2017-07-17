@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppState } from './shared/state/app.state';
 import { RouterScrollService } from './shared/router/router-scroll.service';
+import { AuthenticationService } from './shared/authentication/authentication.service';
 
 @Component({
 	selector: '[app-root]',
@@ -22,9 +23,11 @@ import { RouterScrollService } from './shared/router/router-scroll.service';
 })
 export class AppComponent {
 	offCanvasState: boolean;
+
 	constructor(
 		private store: Store<AppState>,
-		private routerScrollService: RouterScrollService
+		private routerScrollService: RouterScrollService,
+		private authService: AuthenticationService 
 	){
 		this.store.select('offcanvas').subscribe((state: boolean) => {
 			this.offCanvasState = state;
@@ -33,9 +36,14 @@ export class AppComponent {
 
 	ngOnInit(){
 		this.routerScrollService.registerEvents();
+		this.refreshAuthToken();
 	}
 	@HostListener('window:popstate', ['$event'])
 	public onPopState(event) {
 		this.routerScrollService.restoreScrollPosition = true;
+	}
+	private refreshAuthToken(){
+		this.authService.refreshAuthToken();
+		setTimeout(() => this.refreshAuthToken(), 86400000);
 	}
 }

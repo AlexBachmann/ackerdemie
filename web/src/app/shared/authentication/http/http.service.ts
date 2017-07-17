@@ -17,6 +17,7 @@ import { LoginUrlResolver } from '../../url-resolver/login-url-resolver';
 import { AuthenticationService } from '../authentication.service';
 import { JwtStorage } from '../jwt-storage/jwt-storage.service';
 import { RefreshTokenStorage } from '../refresh-token-storage/refresh-token-storage.service';
+import { UserStorage } from '../user-storage/user-storage.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -26,10 +27,10 @@ export class TekklHttpService extends Http {
 		xhrBackend: XHRBackend, 
 		requestOptions: RequestOptions, 
 		private config: Config,
-		protected authService: AuthenticationService,
 		protected router: Router,
 		protected jwtStorage: JwtStorage,
-		protected refreshTokenStorage: RefreshTokenStorage
+		protected refreshTokenStorage: RefreshTokenStorage,
+		protected userStorage: UserStorage
 	){
 		super(xhrBackend, requestOptions);
 		this.config.load('http', HttpConfig, false);
@@ -52,6 +53,7 @@ export class TekklHttpService extends Http {
 			})
 	 		.catch((error: Response) => {
 	 			if(error.status == 401){
+	 				this.wipeAuthStorage();
 	 				new LoginUrlResolver().resolve(this.router.url).subscribe((loginUrl) => {
 			 			this.router.navigateByUrl(loginUrl);
 			 		});
@@ -95,5 +97,10 @@ export class TekklHttpService extends Http {
 		if(refreshToken){
 			this.refreshTokenStorage.storeRefreshToken(refreshToken);
 		}
+	}
+	wipeAuthStorage(){
+		this.jwtStorage.deleteJwtToken();
+		this.refreshTokenStorage.deleteRefreshToken();
+		this.userStorage.deleteUser();
 	}
 }

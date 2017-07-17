@@ -7,16 +7,24 @@
  * file that was distributed with this source code.
  */
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import { User } from './user.entity';
 import { UserStorage } from './user-storage/user-storage.service';
+import { JwtStorage } from './jwt-storage/jwt-storage.service';
+import { RefreshTokenStorage } from './refresh-token-storage/refresh-token-storage.service';
 
 @Injectable()
 export class AuthenticationService {
 	private user: User = null
 	private redirectUrl: string = '/';
-	constructor(private storage: UserStorage){}
+	constructor(
+		private userStorage: UserStorage,
+		private jwtStorage: JwtStorage,
+		private refreshTokenStorage: RefreshTokenStorage,
+		private http: Http
+	){}
 	getUser(): User{
-		return this.storage.getUser();
+		return this.userStorage.getUser();
 	}
 	isLoggedIn():boolean{
 		var user = this.getUser();
@@ -30,5 +38,15 @@ export class AuthenticationService {
 	}
 	resetRedirectUrl(){
 		this.redirectUrl = '/';
+	}
+	refreshAuthToken(){
+		if(this.jwtStorage.getJwtToken() && this.refreshTokenStorage.getRefreshToken()){
+			this.http.post('/api/token/refresh', null)
+				.subscribe((res) => {
+					console.log(res);
+				}, (err) => {
+					console.log(err);
+				});
+		}
 	}
 }
