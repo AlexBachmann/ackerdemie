@@ -64,6 +64,6 @@ class DateSelectDataTransformer implements DataTransformerInterface
             throw new UnexpectedTypeException($date, 'array');
         }
         $dateTime = new \DateTime($date['year'] . '-' . $date['month'] . '-' . $date['day']);
-        return $team;
+        return $dateTime;
     }
 }
