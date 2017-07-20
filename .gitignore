@@ -19,3 +19,4 @@
 
 # Ignore parameters 
 /engine/config/parameters.yml
+/engine/config/parameters.prod.yml

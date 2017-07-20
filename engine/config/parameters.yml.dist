@@ -32,3 +32,5 @@ parameters:
     app_host: "tekkl.local" # Change to your App's hostname
     app_base_path: '' # Change to your App's base path (if it exists)
     app_use_ssl: false # Change to true, if you use SSL
+
+    locale: 'en'

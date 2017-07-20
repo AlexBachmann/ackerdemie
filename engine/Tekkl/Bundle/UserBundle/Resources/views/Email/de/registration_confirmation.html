@@ -1,0 +1,23 @@
+{% extends "@TekklApp/Email/layout.html" %}
+
+{% block subject %}
+	Dein neues  {{ appName }} Konto wurde erstellt
+{% endblock %}
+
+{% block content %}
+	<p>Hallo,</p>
+
+	<p>wir freuen uns sehr, dass Du dich dazu entschieden hast, ein Konto bei {{ appName }} anzulegen. Aus Sicherheitsgründen musst Du Dein Konto aktivieren, indem Du auf den folgenden Bestätigungslink klickst:</p>
+
+	<p><a href="{{ confirmationLink}}">{{ confirmationLink }}</a></p>
+
+	<p>In Zukunft kannst Du Dich auf der <a href="{{ baseUrl }}">Seite</a> mit einer Kobination aus deinem Benutzername bzw. Deiner Email-Adresse und Deinem Paswort anmelden.</p>
+	
+	<p>Benutzername: {{ username }}<br />
+	Email: {{ email }}</p>
+
+	<p>Wir hoffen, dass Dir unsere Seite gefallen wird. Falls Du Zeit und Lust hast, uns Feedback zu geben, würden wir das sehr begrüßen. Schreib uns einfach eine Email an <a href="mailto:{{ appEmail }}">{{ appEmail }}</a> und wir werden uns schnellstmöglich bei Dir zurück melden.</p>
+
+	<p>Mit freundlichen Grüßen<br />
+	Dein Team von {{ appName }}</p>
+{% endblock %}

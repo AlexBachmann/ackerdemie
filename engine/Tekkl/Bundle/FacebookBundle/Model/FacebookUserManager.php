@@ -75,7 +75,7 @@ abstract class FacebookUserManager implements FacebookUserManagerInterface {
         return $user;
     }
 
-    public function generateUsernameFromFacebookName($name){
+    public function generateUsernameFromFacebookName($facebookName){
         $validUserName = $this->generateValidUserName($facebookName);
         $validUserName = $this->usernameCanonicalizer->canonicalize($validUserName);
 

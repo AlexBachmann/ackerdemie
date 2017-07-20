@@ -63,9 +63,9 @@ class User extends BaseUser
 
     public function setName($name){
         $parts = explode(' ', $name, 2);
-        $this->setFirstname($name[0]);
-        if(isset($name[1])){
-            $this->setLastname($name[1]);
+        $this->setFirstname($parts[0]);
+        if(isset($parts[1])){
+            $this->setLastname($parts[1]);
         }else{
             $this->setLastname('');
         }

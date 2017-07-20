@@ -1,0 +1,21 @@
+{% extends "@TekklApp/Email/layout.html" %}
+
+{% block subject %}
+	Dein neues {{ appName }} Konto wurde erstellt
+{% endblock %}
+{% block content %}
+	<p>Hallo,</p>
+
+	<p>wir freuen uns sehr, dass Du dich dazu entschieden hast, ein Konto bei {{ appName }} anzulegen. Du hast Dich entschieden, den Facebook Button zu nutzen, um Dich auf der Seite zum ersten Mal anzumelden. Daher haben wir für Dich ein Konto automatisch erstellt:</p>
+	<p>
+		Benutzername: {{ username }}<br />
+		Email: {{ email }}
+	</p>
+
+	<p>Momentan kannst Du Dich nur über den Facebook Button auf der Seite anmelden. Falls Du Dich zukünftig auch über eine Kombination aus Benutzername bzw. Email und Deinem Passwort anmelden möchtest, musst Du vorher auf den &quot;<a href="{{ passwordResetLink }}">Passwort vergesen?</a>&quot; Link im Anmeldebereich klicken. Du wirst dann aufgefordert, Deine Email-Adresse anzugeben (siehe oben) und der Prozess, dass neue Passwort zu setzen wird gestartet.</p>
+
+	<p>Wir hoffen, dass Dir unsere Seite gefallen wird. Falls Du Zeit und Lust hast, uns Feedback zu geben, würden wir das sehr begrüßen. Schreib uns einfach eine Email an <a href="mailto:{{ appEmail }}">{{ appEmail }}</a> und wir werden uns schnellstmöglich bei Dir zurück melden.</p>
+
+	<p>Mit freundlichen Grüßen<br />
+	Dein Team von {{ appName }}</p>
+{% endblock %}
