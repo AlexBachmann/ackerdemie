@@ -12,6 +12,9 @@ import { HomeRoutingModule } from './routing.module';
 import { HomeComponent } from './home.component';
 import { BrowserModule } from '../../shared/browser/browser.module';
 import { NotificationModule } from '../../shared/ui/notification/notification.module';
+import { VeggiComponent } from './veggi/veggi.component';
+import { DialogComponent } from './veggi/dialog/dialog.component';
+import { AckerComponent } from './acker/acker.component';
 
 @NgModule({
 	imports: [
@@ -21,7 +24,10 @@ import { NotificationModule } from '../../shared/ui/notification/notification.mo
 		HomeRoutingModule
 	],
 	declarations: [
-		HomeComponent
+		HomeComponent,
+		VeggiComponent,
+		DialogComponent,
+		AckerComponent
 	]
 })
 export class HomeModule { }

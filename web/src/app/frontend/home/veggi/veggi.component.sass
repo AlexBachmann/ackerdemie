@@ -1,0 +1,62 @@
+@import "./src/assets/private/sass/base";
+.element-container
+	position: relative
+	padding-bottom: 200%
+
+	.foreground
+		position: absolute
+		left: 0
+		bottom: 0
+		width: 100%
+		background-image: url('/assets/private/icons/svg/root_foreground.svg')
+		padding-bottom: 100%
+		
+	.veggy
+		transition: all 1s
+		cursor: pointer
+
+		&.karotte-happy
+			position: absolute
+			background-image: url('/assets/private/icons/svg/karrotte_gross_happy2.svg')
+			left: 20%
+			bottom: 36%
+			padding-bottom: 145%
+			width: 75%
+
+		&.karotte-sad
+			position: absolute
+			background-image: url('/assets/private/icons/svg/karrotte_gross_sad2.svg')
+			left: 19%
+			bottom: 37%
+			padding-bottom: 80%
+			width: 80%
+			&.bottom
+				bottom: 13% !important
+
+		&.radischen-happy
+			position: absolute
+			background-image: url('/assets/private/icons/svg/radischen_happy.svg')
+			left: 37%
+			bottom: 25%
+			padding-bottom: 165%
+			width: 75%
+		&.bottom
+			bottom: 1% !important
+
+	&:hover
+		.veggy
+
+	.dialog
+		position: absolute
+		border-radius: 5px
+		background: white
+		border: 5px solid $green
+		visibility: hidden
+		opacity: 0
+		transition: visibility 0s 0.4s, opacity 0.4s ease-in-out
+
+		&.active
+			visibility: visible
+			opacity: 1
+			transition: visibility 0s, opacity 0.4s ease-in-out
+

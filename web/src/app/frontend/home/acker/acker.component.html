@@ -1,0 +1,6 @@
+<div class="acker">
+	<div class="dialog {{ getDialogPositionClass() }} {{ getDialogState() }}" (click)="closeDialog()">
+		<div class="dialog-content" [innerHTML]="getDialogMessage()"></div>
+	</div>
+	<ng-content></ng-content>
+</div>

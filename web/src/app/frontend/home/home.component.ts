@@ -27,5 +27,4 @@ export class HomeComponent extends PageComponent implements OnInit {
 	ngOnInit() {
 		this.setPageTitle();
 	}
-
 }
